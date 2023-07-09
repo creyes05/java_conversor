@@ -1,6 +1,7 @@
 package desafioConversor;
 
 import javax.swing.JOptionPane;
+import temperatura.VentanaMostrarTemperatura;
 
 public class main {
 
@@ -15,11 +16,15 @@ public class main {
 			Object[] opcion = { "Selecciona", "Conversor de moneda", "Conversor de temperatura" };
 
 			String opc = (String) JOptionPane.showInputDialog(null,
-					"Seleccione una opción de conversión" + "\n" + "1.- Conversor de moneda" + "\n"
-							+ "2.- Conversor de temperatura",
+					"Seleccione una opción de conversión" + "\n" 
+							+ "1.- Conversor de moneda" + "\n"
+							+ "2.- Conversor de temperatura" + "\n",
+			
 					"Menú", JOptionPane.PLAIN_MESSAGE, null, opcion, "Selecciona");
-
+			
+			
 			if (opc == "Conversor de moneda") {
+		
 				String caracter = JOptionPane.showInputDialog(null, "Ingresa la cantidad de dinero que deseas convertir");
 				boolean esNumero = caracter.matches("[+-]?\\d*(\\.\\d+)?");
 
@@ -35,140 +40,89 @@ public class main {
 							"Elige la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE,
 							null, monedas, "Selecciona");
 
+					
 					if (opc2 == "De Peso a Dolar") {
-						ConvertirPesoADolar pesoADolar = new ConvertirPesoADolar(cantidad);
-						pesoADolar.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null,"Valor del dolar: " + pesoADolar.getDolar() + " dolar"+ "\n" + 
-								cantidad + " peso es igual a: " + pesoADolar.getConvertirPesoADivisas() + " dolar.");
+							
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarPesoDolar();
 						
-						
-						Object[] options = {"Si","No","Cancelar"};
-						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
-						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+												
 					}
 
 					if (opc2 == "De Peso a Euro") {
-						ConvertirPesoAEuro pesoAEuro = new ConvertirPesoAEuro(cantidad);
-						pesoAEuro.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null,"Valor del euro: " + pesoAEuro.getEuro() + " euro"+ "\n" +
-								cantidad + " pesos es igual a: " + pesoAEuro.getConvertirPesoADivisas() + " Euro.");
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarPesoEuro();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 						
 					}
 
 					if (opc2 == "De Peso a Libras") {
-						ConvertirPesoALibra pesoLibra = new ConvertirPesoALibra(cantidad);
-						pesoLibra.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null,"Valor de la libra: " + pesoLibra.getLibra() + " libra"+ "\n" +
-								cantidad + " pesos es igual a: " + pesoLibra.getConvertirPesoADivisas() + " libra.");
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarPesoLibras();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 					}
 
 					if (opc2 == "De Peso a Yen") {
-						ConvertirPesoAYen pesoYen = new ConvertirPesoAYen(cantidad);
-						pesoYen.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null,"Valor de la Yen: " + pesoYen.getYen() + " yen" + "\n" +
-								cantidad + " pesos es igual a: " + pesoYen.getConvertirPesoADivisas() + " yen.");
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarPesoYen();
 
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 					}
 
 					if (opc2 == "De Peso a Won Coreano") {
-						ConvertirPesoAWon pesoWon = new ConvertirPesoAWon(cantidad);
-						pesoWon.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null,"Valor del Won Coreano: " + pesoWon.getWon() + " won coreano" + "\n" +
-								cantidad + " pesos es igual a: " + pesoWon.getConvertirPesoADivisas() + " won coreano.");
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarPesoWon();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 						
 					}
 
 					if (opc2 == "De Dolar a Peso") {
-						ConvertirPesoADolar dolarAPeso = new ConvertirPesoADolar(cantidad);
-						dolarAPeso.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null, "Valor del dolar: " + dolarAPeso.getDolar() + " dolar"+ "\n" +
-								cantidad + " dolar es igual a: " + dolarAPeso.getConvertirDivisaAPeso() + " peso.");
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarDolarPeso();
 
-
-						Object[] options = {"Si","No","Cancelar"};
-						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 						
 					}
 
 					if (opc2 == "De Euro a Peso") {
-						ConvertirPesoAEuro euroAPeso = new ConvertirPesoAEuro(cantidad);
-						euroAPeso.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null, "Valor del euro: " + euroAPeso.getEuro() + " euro"+ "\n" +
-								cantidad + " euro es igual a: " + euroAPeso.getConvertirDivisaAPeso() + "peso.");
-
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarEuroPeso();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
 					}
 
 					if (opc2 == "De Libras a Peso") {
-						ConvertirPesoALibra libraAPeso = new ConvertirPesoALibra(cantidad);
-						libraAPeso.setValorIngresado(cantidad);
-						JOptionPane.showMessageDialog(null, "Valor de la libra: " + libraAPeso.getLibra() + " libra"+ "\n" +
-								cantidad + " libra es igual a: " + libraAPeso.getConvertirDivisaAPeso() + "peso.");
-
-
-						Object[] options = {"Si","No","Cancelar"};
 						
-						int n = JOptionPane.showOptionDialog(null,"Desea continuar","Selecciona una opcion",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
-
-						if( n == 0) continuar = true;
-						if( n == 1) continuar = false;
-						if( n == 2) continuar = false;
+						VentanaMostrarResultado ventana = new VentanaMostrarResultado(cantidad);
+						ventana.MostrarLibraPeso();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+						
 					}
 
 				} else {
@@ -178,9 +132,95 @@ public class main {
 
 			}
 			if (opc == "Conversor de temperatura") {
-				JOptionPane.showInputDialog(null, "Ingresa la temperatura a convertir");
-			}
+				String caracter = JOptionPane.showInputDialog(null, "Ingresa la temperatura a convertir");
+				boolean esNumero = caracter.matches("[+-]?\\d*(\\.\\d+)?");
 
+				if (esNumero) {
+
+					double temperatura = Double.parseDouble(caracter);
+
+					Object[] monedas = { "Selecciona", "De Celsius a Fahrenheit", "De Celsius a kelvin", "De Fahrenheit a Celsius",
+							"De Fahrenheit a kelvin", "De kelvin a Celsius", "De kelvin a Fahrenheit" };
+
+					String opc3 = (String) JOptionPane.showInputDialog(null,
+							"Elige la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE,
+							null, monedas, "Selecciona");
+
+					
+					if (opc3 == "De Celsius a Fahrenheit") {
+							
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarCF();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+					
+					if (opc3 == "De Celsius a kelvin") {
+						
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarCK();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+					
+					if (opc3 == "De Fahrenheit a Celsius") {
+						
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarFC();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+					
+					if (opc3 == "De Fahrenheit a kelvin") {
+						
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarFK();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+					
+					if (opc3 == "De kelvin a Celsius") {
+						
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarKC();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+					
+
+					if (opc3 == "De kelvin a Fahrenheit") {
+						
+						VentanaMostrarTemperatura vmr = new VentanaMostrarTemperatura(temperatura);
+						vmr.MostrarKF();
+						
+						VentanaOpcion menuSeleccion = new VentanaOpcion(continuar);
+						menuSeleccion.setDecision();
+						continuar = menuSeleccion.getDecision();
+
+					}
+
+
+				}else {
+					JOptionPane.showMessageDialog(null, "Solo se permiten numeros");
+					continuar = true;
+				}
+			
+		}
 			
 		} while (continuar == true);
 		JOptionPane.showMessageDialog(null, "Programa finalizado");
